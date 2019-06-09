@@ -1,6 +1,6 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
-import {connect} from "react-redux";
+import {Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
 import * as wordActions from "../../action/word-actions";
 import { FormControl, TextField, Select, Fab, Icon} from '@material-ui/core'
 
@@ -10,7 +10,7 @@ class Landing extends React.Component{
     this.state = {
       name: '',
       difficulty: '' || 'easy',
-      number: '' || 3
+      numberOfQuestions: '' || 3
     };
   }
 
@@ -39,6 +39,7 @@ class Landing extends React.Component{
             onChange={this.handleChange}
             // className={classes.textField}
             margin="normal"
+            required
           />
           <h1>, and I want to play a(n) </h1>
           <Select
@@ -55,8 +56,8 @@ class Landing extends React.Component{
           <h1> game of spelling bee with </h1>
           <Select
             native
-            id="number"
-            value={this.state.difficulty}
+            id="numberOfQuestions"
+            value={this.state.numberOfQuestions}
             onChange={this.handleChange}
           >
             <option value='1'>three</option>
@@ -82,7 +83,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  mappedSubmit: (formData) => dispatch(wordActions.submitForm(formData)),
+  mappedSubmit: (formData) => dispatch(wordActions.submitForm(formData))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);

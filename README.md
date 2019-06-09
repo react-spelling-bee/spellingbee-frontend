@@ -1,4 +1,4 @@
-![CF](./public/assets/bee-loading.gif) Spelling Bee Frontend
+Spelling Bee Frontend
 ==============================================
 
 ## LadyBees

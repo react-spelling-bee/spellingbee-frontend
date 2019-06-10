@@ -1,8 +1,9 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {Redirect} from 'react-router-dom';
-import {TextField} from "@material-ui/core";
+import {Redirect, Link} from 'react-router-dom';
+import {Box, Fab, TextField} from "@material-ui/core";
 import {saveScore} from '../../action/scores-actions';
+import {newGame} from "../../action/word-actions";
 
 export class WinOrLose extends React.Component {
   constructor(props) {
@@ -39,15 +40,14 @@ export class WinOrLose extends React.Component {
   render() {
     let finalMessage = this.winOrLose()
       ? 'Congrats! You win.'
-      : `Sorry, you lose. The correct spelling is ${this.state.missedWord}.`;
+      : `Sorry, you lose. The correct spelling is "${this.state.missedWord}."`;
 
     return (
-      <div>
+      <div className={'finalScore'}>
         <h1>{finalMessage}</h1>
 
         <form onSubmit={this.submitScore}>
           <TextField
-            id='name'
             value={this.state.name}
             margin='normal'
             readOnly
@@ -72,9 +72,20 @@ export class WinOrLose extends React.Component {
               margin='normal'
               readOnly
             /> }
-
-          <button type="submit">Save to Scoreboard</button>
+          <center>
+            <Fab
+              variant="extended"
+              color="primary"
+              size="small"
+              type="submit"
+              id="save"
+            >
+              save to scoreboard
+            </Fab>
+          </center>
         </form>
+
+        <Link to='/' onClick={this.props.mappedNewGame}>[ Play again? ]</Link>
 
         { this.state.submit ? <Redirect to='/scores'/> : undefined }
       </div>
@@ -90,7 +101,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  mappedSaveScore: (formData) => dispatch(saveScore(formData))
+  mappedSaveScore: (formData) => dispatch(saveScore(formData)),
+  mappedNewGame: () => dispatch(newGame())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(WinOrLose);

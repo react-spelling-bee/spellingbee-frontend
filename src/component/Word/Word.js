@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {checkAnswer} from "../../action/word-actions";
-import {TextField} from "@material-ui/core";
+import {TextField, Fab, Box} from "@material-ui/core";
 
 export class Word extends React.Component {
   constructor(props) {
@@ -36,9 +36,25 @@ export class Word extends React.Component {
 
     return(
       <div>
-        <h1>{ word.sentence }</h1>
-        <button onClick={this.handlePlay.bind(this, 'word')}>hear word</button>
-        <button onClick={this.handlePlay.bind(this, 'sentence')}>use in a phrase</button>
+        <h1 style={{display: 'block'}}>{ word.sentence }</h1>
+        <Box m={2}>
+          <Fab
+            variant="extended"
+            size="small"
+            onClick={this.handlePlay.bind(this, 'word')}
+            mr={5}
+          >
+            hear word
+          </Fab>
+          <Fab
+            variant="extended"
+            size="small"
+            onClick={this.handlePlay.bind(this, 'sentence')}
+          >
+            use in a phrase
+          </Fab>
+        </Box>
+
 
         <form onSubmit={this.handleSubmit}>
           <TextField
@@ -47,6 +63,7 @@ export class Word extends React.Component {
             placeholder="spell word here"
             value={this.state.spelling}
             onChange={this.handleChange}
+            spellCheck={false}
             margin="normal"
             required
           />

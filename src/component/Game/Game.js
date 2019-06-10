@@ -4,6 +4,7 @@ import ScoreHeader from '../ScoreHeader/ScoreHeader';
 import { Redirect } from 'react-router-dom';
 import {connect} from "react-redux";
 import * as wordActions from "../../action/word-actions";
+import { Box } from '@material-ui/core';
 
 class Game extends React.Component {
   constructor(props) {
@@ -38,10 +39,12 @@ class Game extends React.Component {
           <ScoreHeader
             correctResponses={this.state.correctResponses}
           />
-          <Word
-            word={words[this.state.index]}
-            onSubmit={this.handleCheckAnswer}
-          />
+          <Box>
+            <Word
+              word={words[this.state.index]}
+              onSubmit={this.handleCheckAnswer}
+            />
+          </Box>
         </div>
       )
     } else {

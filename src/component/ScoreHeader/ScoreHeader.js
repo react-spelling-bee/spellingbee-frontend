@@ -8,12 +8,12 @@ export class ScoreHeader extends React.Component {
     let { correctResponses } = this.props;
     return (
       <div>
-        <AppBar position="static">
+        <AppBar position='static'>
           <Toolbar variant="dense">
             <ul>
-                <li>{name}</li>
-                <li>{difficulty}</li>
-                <li>{correctResponses} out of {numberOfQuestions}</li>
+              <li><strong>Name</strong>: {name}</li>
+              <li><strong>Difficulty</strong>: {difficulty}</li>
+              <li><strong>Score</strong>: {correctResponses} out of {numberOfQuestions}</li>
             </ul>
           </Toolbar>
         </AppBar>

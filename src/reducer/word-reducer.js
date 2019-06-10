@@ -9,6 +9,8 @@ export default (state = {}, {type, payload}) => {
         ? wordObject.isCorrect = true
         : wordObject.isCorrect = false;
       return newState;
+    case 'NEW_GAME':
+      return payload;
     default:
       return state;
   }

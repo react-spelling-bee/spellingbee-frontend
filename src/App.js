@@ -9,7 +9,7 @@ import { Container } from '@material-ui/core';
 export default class App extends React.Component {
   render() {
     return(
-      <Container maxWidth="sm">
+      <Container maxWidth="md">
         <BrowserRouter>
           <Route exact path="/" component={Landing}/>
           <Route exact path="/game" component={Game}/>

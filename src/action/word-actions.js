@@ -1,7 +1,4 @@
 import superagent from 'superagent';
-import dotenv from 'dotenv';
-dotenv.config();
-// import uuid from 'uuid';
 
 export const submit = data => ({
   type: 'SUBMIT',
@@ -24,6 +21,8 @@ export const submitForm = formData => store => {
   return superagent.post(`${API_URL}game`)
     .send(formData)
     .then(response => {
-      return store.dispatch(submit(response.body))
+      let submitObject = response.body;
+      submitObject.unshift(formData);
+      return store.dispatch(submit(submitObject))
     })
 };

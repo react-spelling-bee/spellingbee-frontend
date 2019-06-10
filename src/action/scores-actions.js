@@ -5,7 +5,7 @@ export const submit = data => ({
   payload: data
 });
 
-const API_URL = 'http://localhost:3000/';
+const API_URL = 'http://spellingbee-backend.herokuapp.com/' || 'http://localhost:3000/';
 export const saveScore = formData => store => {
   return superagent.post(`${API_URL}score`)
     .send(formData)

@@ -1,4 +1,6 @@
 import superagent from 'superagent';
+import dotenv from 'dotenv';
+dotenv.config();
 // import uuid from 'uuid';
 
 export const submit = data => ({
@@ -16,7 +18,7 @@ export const newGame = () => ({
   payload: []
 });
 
-const API_URL = 'http://localhost:3000/';
+const API_URL = 'http://spellingbee-backend.herokuapp.com/' || 'http://localhost:3000/';
 
 export const submitForm = formData => store => {
   return superagent.post(`${API_URL}game`)

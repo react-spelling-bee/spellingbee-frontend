@@ -1,5 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
+import {newGame} from "../../action/word-actions";
 
 export class Scores extends React.Component {
   printScores = () => {
@@ -29,6 +31,8 @@ export class Scores extends React.Component {
           { scores.length > 0 ? this.printScores() : null }
           </tbody>
         </table>
+
+        <Link to='/' onClick={this.props.mappedNewGame}>[ Play again? ]</Link>
       </div>
     )
   }
@@ -40,4 +44,8 @@ const mapStateToProps = (state) => {
   }
 };
 
-export default connect(mapStateToProps, null)(Scores);
+const mapDispatchToProps = dispatch => ({
+  mappedNewGame: () => dispatch(newGame())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Scores);
